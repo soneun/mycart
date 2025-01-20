@@ -17,7 +17,16 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
 .align_center {
   display: flex;
   align-items: center;
+}
+
+a {
+  font-size: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }

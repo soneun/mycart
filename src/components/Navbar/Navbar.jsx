@@ -1,12 +1,21 @@
 import "./Navbar.css";
-import rocket from "../assets/rocket.png";
+import rocket from "../../assets/rocket.png";
+import star from "../../assets/glowing-star.png";
+import idButton from "../../assets/id-button.png";
+import memo from "../../assets/memo.png";
+import order from "../../assets/package.png";
+import lock from "../../assets/locked.png";
 
 import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="align_center navbar">
-      <div className="align_center">
+    <nav className="align_center">
+      <div className="align_center navbar_links">
+        <a href="#" className="align_center">
+          Home
+          <img src={rocket} alt="" className="link_emoji" />
+        </a>
         <h1 className="navbar_heading">myCart</h1>
         <form className="align_center navbar_form">
           <input
