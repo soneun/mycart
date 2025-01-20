@@ -17,3 +17,7 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+.align_center {
+  display: flex;
+  align-items: center;
+}
