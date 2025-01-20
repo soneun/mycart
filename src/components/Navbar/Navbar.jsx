@@ -7,15 +7,12 @@ import order from "../../assets/package.png";
 import lock from "../../assets/locked.png";
 
 import React from "react";
+import LinkWithIcon from "./LinkWithIcon";
 
 const Navbar = () => {
   return (
-    <nav className="align_center">
-      <div className="align_center navbar_links">
-        <a href="#" className="align_center">
-          Home
-          <img src={rocket} alt="" className="link_emoji" />
-        </a>
+    <nav className="align_center navbar">
+      <div className="align_center">
         <h1 className="navbar_heading">myCart</h1>
         <form className="align_center navbar_form">
           <input
@@ -28,7 +25,17 @@ const Navbar = () => {
           </button>
         </form>
       </div>
-      <div className="align_center navbar_links"></div>
+      <div className="align_center navbar_links">
+        <LinkWithIcon title="홈페이지" link="/" emoji={rocket} />
+        <LinkWithIcon title="상품들" link="/products" emoji={star} />
+        <LinkWithIcon title="로그인" link="/login" emoji={idButton} />
+        <LinkWithIcon title="가입" link="/signup" emoji={memo} />
+        <LinkWithIcon title="내주문" link="/myorders" emoji={order} />
+        <LinkWithIcon title="로그아웃" link="/logout" emoji={lock} />
+        <a href="/cart" className="align_center">
+          장바구니 <p className="align_center cart_counts">0</p>
+        </a>
+      </div>
     </nav>
   );
 };
