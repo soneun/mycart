@@ -3,7 +3,7 @@ import "./ProductsList.css";
 import apiClient from "../../utils/api-client";
 import { useEffect, useState } from "react";
 
-const ProductsList = () => {
+const ProductsList = ({}) => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
@@ -28,8 +28,16 @@ const ProductsList = () => {
 
       <div className="products_list">
         {error && <em className="form_error">{error}</em>}
-        {products.map((product) => (
-          <ProductCard key={product._id} />
+        {products.map((p) => (
+          <ProductCard
+            key={p._id}
+            id={p._id}
+            image={p.images[0]}
+            price={p.price}
+            rating={p.rating}
+            ratingCounts={p.reviews.rate}
+            stock={p.stock}
+          />
         ))}
       </div>
     </section>
