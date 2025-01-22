@@ -3,22 +3,7 @@ import "./SingleProductPage.css";
 import QuantityInput from "./QuantityInput";
 import { useParams } from "react-router-dom";
 import UseData from "../../Hook/UseData";
-
-// //서버에서 가져오는 제품 데이터 객체(임시)
-// const product = {
-//   id: 1,
-//   title: "상품 타이틀",
-//   description:
-//     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime aliquid rerum a? Fugiat soluta facilis deleniti voluptatibus ab architecto dolores a, vero, beatae veniam error doloribus quia laudantium? Error fuga consequuntur quia accusantium? Consequatur modi laboriosam saepe culpa, ab atque.",
-//   price: 9900,
-//   images: [
-//     "https://greendroprecycling.com/wp-content/uploads/2017/04/GreenDrop_Station_Aluminum_Can_2.jpg",
-//     "https://greendroprecycling.com/wp-content/uploads/2017/04/GreenDrop_Station_Aluminum_Can_Coke.jpg",
-//     "https://greendroprecycling.com/wp-content/uploads/2017/04/GreenDrop_Station_Beverage_Cup_Lid_2.jpg",
-//     "https://greendroprecycling.com/wp-content/uploads/2017/04/GreenDrop_Station_Bottle_Poland_Spring.jpg",
-//   ],
-//   stock: 10,
-// };
+import Loader from "../Common/Loader";
 
 const SingleProductPage = () => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -30,6 +15,7 @@ const SingleProductPage = () => {
   return (
     <section className="align_center single_product">
       {error && <em className="form_error">{error}</em>}
+      {isLoading && <Loader />}
       {product._id && (
         <>
           <div className="align_center">
