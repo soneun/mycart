@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 import useData from "../../Hook/UseData";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 import { useSearchParams } from "react-router-dom";
+import Pagination from "../Common/Pagination";
 
 const ProductsList = () => {
   const [search, setSearch] = useSearchParams(); //요청 주소 뒤의 쿼리스트링
   const category = search.get("category"); //category=값 을 가져옴
   const page = search.get("page"); //몇번째 페이지
   const { data, error, isLoading } = useData(
-    "products",
+    "products", //products는 주소
     {
       params: {
         category,
@@ -19,11 +20,11 @@ const ProductsList = () => {
       },
     },
     [category, page]
-  ); //products는 주소
+  );
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   const handlePageChange = (page) => {
     //기존의 검색한 카테고리가 있으면 유지하면서 페이지만 업데이트
-    const currentParams = Object.fromEntries([...search]);
+    const currentParams = Object.fromEntries([...search]); //currentParams 라는 객체를 생성
     setSearch({ ...currentParams, page: page });
   };
   // const [products, setProducts] = useState([]);
@@ -53,6 +54,7 @@ const ProductsList = () => {
         {isLoading && skeletons.map((n) => <ProductCardSkeleton key={n} />)}
 
         {data.products &&
+          !isLoading &&
           data.products.map((p) => (
             <ProductCard
               key={p._id}
@@ -64,8 +66,16 @@ const ProductsList = () => {
               stock={p.stock}
             />
           ))}
-        <button onClick={() => handlePageChange(2)}>페이지2</button>
       </div>
+      {/* 페이지네이션 넣기 */}
+      {data && (
+        <Pagination
+          total={data.totalProducts}
+          perPage={8}
+          onClick={handlePageChange}
+          currentPage={page}
+        />
+      )}
     </section>
   );
 };
