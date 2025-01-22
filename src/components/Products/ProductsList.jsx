@@ -4,10 +4,22 @@ import apiClient from "../../utils/api-client";
 import { useEffect, useState } from "react";
 import useData from "../../Hook/UseData";
 import ProductCardSkeleton from "./ProductCardSkeleton";
+import { useSearchParams } from "react-router-dom";
 
 const ProductsList = () => {
-  const { data, error, isLoading } = useData("products");
+  const [search, setSearch] = useSearchParams(); //요청 주소 뒤의 쿼리스트링
+  const category = search.get("category"); //category=값 을 가져옴
+  const { data, error, isLoading } = useData(
+    "products",
+    {
+      params: {
+        category,
+      },
+    },
+    [category]
+  ); //products는 주소
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+
   // const [products, setProducts] = useState([]);
   // const [error, setError] = useState("");
 

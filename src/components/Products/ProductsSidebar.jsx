@@ -5,7 +5,7 @@ import apiClient from "../../utils/api-client";
 import UseData from "../../Hook/UseData";
 
 const ProductsSidebar = () => {
-  const { data: categories, error } = UseData("category");
+  const { data: categories, error } = UseData("category"); //category는 주소
 
   return (
     <aside className="products_sidebar">
