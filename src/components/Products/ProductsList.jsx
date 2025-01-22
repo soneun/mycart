@@ -9,17 +9,23 @@ import { useSearchParams } from "react-router-dom";
 const ProductsList = () => {
   const [search, setSearch] = useSearchParams(); //요청 주소 뒤의 쿼리스트링
   const category = search.get("category"); //category=값 을 가져옴
+  const page = search.get("page"); //몇번째 페이지
   const { data, error, isLoading } = useData(
     "products",
     {
       params: {
         category,
+        page, //주소 뒤에 쿼리스트링 붙여주는것
       },
     },
-    [category]
+    [category, page]
   ); //products는 주소
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
-
+  const handlePageChange = (page) => {
+    //기존의 검색한 카테고리가 있으면 유지하면서 페이지만 업데이트
+    const currentParams = Object.fromEntries([...search]);
+    setSearch({ ...currentParams, page: page });
+  };
   // const [products, setProducts] = useState([]);
   // const [error, setError] = useState("");
 
@@ -58,6 +64,7 @@ const ProductsList = () => {
               stock={p.stock}
             />
           ))}
+        <button onClick={() => handlePageChange(2)}>페이지2</button>
       </div>
     </section>
   );
