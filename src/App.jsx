@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar/Navbar";
 import Routing from "./components/Routing/Routing";
 import { jwtDecode } from "jwt-decode";
 
+//만약 토큰이 있으면 axios 설정에 추가됨
+setAuthToken(localStorage.getItem("token"));
+
 function App() {
   const [user, setUser] = useState(null);
   const [cart, setCart] = useState([]); //장바구니
