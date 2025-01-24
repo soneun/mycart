@@ -9,7 +9,7 @@ import MyOrder from "../MyOrder/MyOrder";
 import { Route, Routes } from "react-router-dom";
 import Logout from "../Authentication/Logout";
 
-const Routing = ({ addToCart }) => {
+const Routing = ({ addToCart, cart }) => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -20,7 +20,7 @@ const Routing = ({ addToCart }) => {
       />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/cart" element={<CartPage />} />
+      <Route path="/cart" element={<CartPage cart={cart} />} />
       <Route path="/myorders" element={<MyOrder />} />
       <Route path="/logout" element={<Logout />} />
     </Routes>
