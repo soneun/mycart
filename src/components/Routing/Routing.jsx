@@ -9,7 +9,7 @@ import MyOrder from "../MyOrder/MyOrder";
 import { Route, Routes } from "react-router-dom";
 import Logout from "../Authentication/Logout";
 
-const Routing = ({ addToCart, cart }) => {
+const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
