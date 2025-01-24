@@ -5,7 +5,9 @@ import Routing from "./components/Routing/Routing";
 import { jwtDecode } from "jwt-decode";
 import {
   addToCartAPI,
+  decreaseProductAPI,
   getCartAPI,
+  increaseProductAPI,
   removeFromCartAPI,
 } from "./services/cartServices";
 import setAuthToken from "./utils/setAuthToken";
