@@ -3,7 +3,11 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Routing from "./components/Routing/Routing";
 import { jwtDecode } from "jwt-decode";
-import { addToCartAPI, getCartAPI } from "./services/cartServices";
+import {
+  addToCartAPI,
+  getCartAPI,
+  removeFromCartAPI,
+} from "./services/cartServices";
 import setAuthToken from "./utils/setAuthToken";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,6 +44,9 @@ function App() {
     const oldCart = [...cart];
     const newCart = oldCart.filter((item) => item.product._id !== id);
     setCart(newCart);
+    removeFromCartAPI(id).catch((err) => {
+      toast.error("장바구니 상품 삭제 에러");
+    });
   };
   //서버에서 장바구니 정보 가져옴
   const getCart = () => {
