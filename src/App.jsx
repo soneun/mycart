@@ -74,7 +74,7 @@ function App() {
       .then((res) => {
         setCart(res.data);
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error("카트 가져오기에 실패했습니다");
       });
   };
@@ -97,7 +97,7 @@ function App() {
   return (
     <UserContext.Provider value={user}>
       <CartContext.Provider
-        value={{ cart, addToCart, removeFromCart, updateCart }}
+        value={{ cart, addToCart, removeFromCart, updateCart, setCart }}
       >
         <div className="app">
           <Navbar user={user} cartCount={cart.length} />
